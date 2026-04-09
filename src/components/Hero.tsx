@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { Loader2, AlertCircle } from 'lucide-react';
 import SuccessModal from './SuccessModal';
+import ErrorModal from './ErrorModal';
 
 const Hero: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const Hero: React.FC = () => {
   const [referralCode, setReferralCode] = useState('');
   const [referredBy, setReferredBy] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -55,8 +57,16 @@ const Hero: React.FC = () => {
       setEmail('');
     } catch (err: any) {
       console.error('Waitlist error:', err);
-      setStatus('error');
-      setMessage(err.message || 'Something went wrong. Please try again.');
+      
+      if (err.code === '23505') {
+        setSubmittedEmail(email);
+        setShowErrorModal(true);
+        setStatus('idle');
+        setEmail('');
+      } else {
+        setStatus('error');
+        setMessage(err.message || 'Something went wrong. Please try again.');
+      }
     }
   };
 
@@ -212,6 +222,13 @@ const Hero: React.FC = () => {
           email={submittedEmail}
           referralCode={referralCode}
           role={role}
+        />
+
+        {/* Duplicate Email Modal */}
+        <ErrorModal
+          isOpen={showErrorModal}
+          onClose={() => setShowErrorModal(false)}
+          email={submittedEmail}
         />
 
         <motion.div

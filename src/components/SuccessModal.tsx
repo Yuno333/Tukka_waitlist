@@ -42,7 +42,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 
       const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
-      const interval: any = setInterval(() => {
+      const interval = setInterval(() => {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {
