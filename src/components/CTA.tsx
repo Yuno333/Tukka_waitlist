@@ -20,8 +20,8 @@ const CTA: React.FC = () => {
         <div className="absolute -top-15 -right-15 w-60 h-60 rounded-full bg-radial-[circle,rgba(196,98,42,0.2),transparent_70%] pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
 
         <div>
-          <h2 className="font-syne text-3xl md:text-4xl font-extrabold tracking-tight text-[#f5f0e8] mb-2">
-            The future of distribution.
+          <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-tight text-[#f5f0e8] mb-4">
+            The future of <span className="bg-gradient-to-r from-brand-accent via-[#f5f0e8] to-[#f5f0e8] bg-clip-text text-transparent">distribution.</span>
           </h2>
           <p className="text-base text-[#f5f0e8]/50">
             Stop fighting algorithms. Join the waitlist and secure your spot in the network.

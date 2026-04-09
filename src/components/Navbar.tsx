@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center h-20 px-6 md:px-12 bg-white/70 backdrop-blur-2xl border-b border-brand-border/10">
+      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center h-16 px-6 md:px-12 bg-white/95 backdrop-blur-2xl border-b border-brand-border/10">
         {/* Logo Column */}
         <div className="flex-1 flex justify-start">
           <a href="#" className="flex items-center gap-2.5 no-underline group">

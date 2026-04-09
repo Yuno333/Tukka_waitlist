@@ -5,20 +5,80 @@ import StarBackground from './StarBackground';
 
 const faqs = [
   {
-    question: "How does TUKKA automate content distribution?",
-    answer: "Our engine analyzes your content's DNA and matches it with real-time platform trends, automatically resizing, re-captioning, and scheduling posts for maximum impact."
+    question: "What is Tukka?",
+    answer: "Tukka is a content distribution platform that helps creators, brands, public figures, and crypto projects amplify their reach through a network of real users (“Spreaders”) sharing content across social media. Instead of relying on ads, Tukka turns everyday users into a distributed marketing engine."
   },
   {
-    question: "Which platforms are currently supported?",
-    answer: "We support TikTok, Instagram Reels, YouTube Shorts, and X (Twitter) natively. LinkedIn and Threads integration is coming in Q3."
+    question: "How does Tukka distribution work?",
+    answer: (
+      <div className="space-y-4">
+        <p>Tukka connects your content to a network of Spreaders who share it within their niche and audience.</p>
+        <div className="space-y-2">
+          <p className="font-bold text-brand-text">Creators and brands can:</p>
+          <ul className="space-y-1">
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Choose their target audience (location, niche, interests)
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Launch campaigns instantly
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Get content distributed across multiple platforms
+            </li>
+          </ul>
+        </div>
+        <p>Spreaders don’t just repost — they <span className="text-brand-accent font-bold">add their own opinions</span>, making the content feel native and trusted.</p>
+      </div>
+    )
   },
   {
-    question: "Is there a limit to how many creators I can manage?",
-    answer: "The waitlist access includes a starter tier, while our Pro and Agency tiers allow for unlimited creator profiles and localized distribution."
+    question: "How do Spreaders earn on Tukka?",
+    answer: (
+      <div className="space-y-4">
+        <p>Spreaders earn through a <span className="text-brand-accent font-bold">CPM-based model (pay per 1,000 views)</span>.</p>
+        <div className="space-y-2">
+          <p className="font-bold text-brand-text">Earnings are based on:</p>
+          <ul className="space-y-1">
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Views generated
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Audience location (higher-value regions earn more)
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Engagement quality
+            </li>
+          </ul>
+        </div>
+        <p>The more attention your content drives, the more you earn — simple.</p>
+      </div>
+    )
   },
   {
-    question: "How do I secure early access?",
-    answer: "Join our waitlist with your professional email. We are onboarding creators in cohorts based on their current reach and content frequency."
+    question: "Do I need a large following to earn as a Spreader?",
+    answer: (
+      <div className="space-y-4">
+        <p>No — follower count doesn’t matter on Tukka.</p>
+        <div className="space-y-2">
+          <p className="font-bold text-brand-text">What matters is:</p>
+          <ul className="space-y-1">
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> How well your content performs
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> How your audience responds to your opinion
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="text-brand-accent">🔸</span> Your ability to drive real conversations
+            </li>
+          </ul>
+        </div>
+        <p>A small, engaged audience can generate strong CPM returns.</p>
+        <p className="font-bold text-brand-accent border-t border-brand-accent/20 pt-4 mt-4">
+          On Tukka, distribution + attention = earnings.
+        </p>
+      </div>
+    )
   }
 ];
 
@@ -26,9 +86,18 @@ const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-brand-bg px-6 pb-24 lg:pb-32">
+    <section id="faq" className="relative overflow-hidden bg-brand-bg px-6 py-24 lg:py-32">
       <StarBackground density={10} color="var(--color-brand-accent)" />
       <div className="max-w-[700px] mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-accent mb-4 block">
+            Questions
+          </span>
+          <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-tight text-brand-text mb-6">
+            Clear the <span className="bg-gradient-to-r from-brand-accent via-brand-text to-brand-text bg-clip-text text-transparent">Noise</span>
+          </h2>
+        </div>
+
         {faqs.map((faq, index) => (
           <div 
             key={index}
@@ -57,9 +126,9 @@ const FAQ: React.FC = () => {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="text-sm text-brand-muted leading-[1.72] pt-3">
+                  <div className="text-sm text-brand-muted leading-[1.72] pt-3">
                     {faq.answer}
-                  </p>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

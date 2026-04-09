@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
-import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import { Loader2, AlertCircle } from 'lucide-react';
+import SuccessModal from './SuccessModal';
 
 const Hero: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [role] = useState<'Creator' | 'Spreader'>('Creator');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [submittedEmail, setSubmittedEmail] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+  const [referredBy, setReferredBy] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    if (ref) setReferredBy(ref);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,14 +33,25 @@ const Hero: React.FC = () => {
     setStatus('loading');
 
     try {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('waitlist')
-        .insert([{ email, created_at: new Date().toISOString() }]);
+        .insert([{ 
+          email, 
+          role,
+          referred_by: referredBy,
+          created_at: new Date().toISOString() 
+        }])
+        .select('referral_code')
+        .single();
 
       if (error) throw error;
-
+      
+      setSubmittedEmail(email);
+      if (data?.referral_code) {
+        setReferralCode(data.referral_code);
+      }
       setStatus('success');
-      setMessage("You're on the list! We'll be in touch soon.");
+      setShowModal(true);
       setEmail('');
     } catch (err: any) {
       console.error('Waitlist error:', err);
@@ -60,7 +83,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#f0ebe0]/5 via-[#0a0a0a]/40 to-brand-bg" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[860px]">
+      <div className="relative z-10 max-w-[1400px] w-full">
         <motion.div
           initial={{ opacity: 1, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,26 +100,64 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-          className="font-syne text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.0] tracking-[-3px] text-[#f5f0e8] mb-7 drop-shadow-[0_2px_48px_rgba(0,0,0,0.4)]"
+          className="font-syne text-4xl md:text-6xl lg:text-8xl font-extrabold leading-[1.1] tracking-[-1px] md:tracking-[-3px] mb-8 drop-shadow-[0_2px_48px_rgba(0,0,0,0.4)] text-center px-4 text-[#f5f0e8]"
         >
-          Turn Content Into Reach
+          <span className="bg-gradient-to-br from-brand-accent via-[#f5f0e8] to-[#f5f0e8] bg-clip-text text-transparent">Turn</span> Content Into <span className="bg-gradient-to-bl from-[#f5f0e8] via-[#f5f0e8] to-brand-accent bg-clip-text text-transparent">Reach</span>
         </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="mb-11 space-y-4"
+          className="mb-12 space-y-6"
         >
-          <div className="space-y-2">
-            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight">
-              Distribution is broken. Tukka fixes it.
+          <div className="space-y-5 px-2">
+            <p className="text-lg md:text-2xl lg:text-3xl font-bold text-[#f5f0e8] tracking-tight text-center leading-tight">
+              Distribution is <s className="decoration-brand-accent/60 opacity-60">broken</s>. <br className="sm:hidden" />
+              Tukka <span className="text-brand-accent">fixes it.</span>
             </p>
-            <p className="text-sm md:text-base text-white/50 max-w-[580px] mx-auto leading-relaxed">
+            <p className="text-[13px] md:text-base text-white/70 max-w-[1000px] mx-auto leading-relaxed text-center px-4 font-medium balance">
               Tukka turns your content into an organic distribution network — powered by real people, real pages, and real audiences.
             </p>
           </div>
         </motion.div>
+
+        {/* Role Selector hidden per user request, defaulting to Creator */}
+        {/*
+        <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="flex justify-center mb-10"
+        >
+            <div className="relative p-1 bg-white/5 border border-white/10 rounded-2xl flex items-center backdrop-blur-md">
+                <motion.div
+                    className="absolute h-[calc(100%-8px)] rounded-xl bg-brand-accent shadow-[0_0_20px_rgba(196,98,42,0.3)]"
+                    initial={false}
+                    animate={{
+                        x: role === 'Creator' ? 0 : '100%',
+                        width: '50%'
+                    }}
+                    transition={{ type: "spring", damping: 28, stiffness: 260 }}
+                />
+                
+                <button
+                    type="button"
+                    onClick={() => setRole('Creator')}
+                    className={`relative flex-1 px-8 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 z-10 whitespace-nowrap outline-none ${role === 'Creator' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
+                >
+                    Creator
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setRole('Spreader')}
+                    className={`relative flex-1 px-8 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 z-10 whitespace-nowrap outline-none ${role === 'Spreader' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
+                >
+                    Spreader
+                </button>
+            </div>
+        </motion.div>
+        */}
 
         <motion.div
           initial={{ opacity: 0, y: 22 }}
@@ -107,42 +168,35 @@ const Hero: React.FC = () => {
           <form
             onSubmit={handleSubmit}
             id="waitlist"
-            className="flex flex-col sm:flex-row gap-2"
+            className="flex flex-col sm:flex-row gap-3"
           >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              disabled={status === 'loading' || status === 'success'}
-              className="flex-1 bg-white/10 border border-white/20 rounded-full px-5 py-3.5 font-dm-sans text-sm text-[#f5f0e8] outline-none backdrop-blur-md transition-all focus:border-brand-accent/60 focus:bg-white/15 placeholder:text-white/30 disabled:opacity-50"
-            />
+            <div className="flex-1 relative group">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                disabled={status === 'loading' || status === 'success'}
+                className="w-full bg-white/[0.12] border-2 border-[#000] rounded-full px-6 py-3.5 font-dm-sans text-sm text-[#f5f0e8] outline-none backdrop-blur-md transition-all focus:bg-white/15 placeholder:text-white/30 disabled:opacity-50"
+              />
+            </div>
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="bg-brand-accent text-[#f5f0e8] border-none rounded-full px-7 py-3.5 font-dm-sans text-sm font-medium cursor-pointer whitespace-nowrap transition-all duration-200 hover:bg-brand-accent-hover hover:-translate-y-px active:translate-y-0 tracking-wide disabled:opacity-50 flex items-center justify-center gap-2"
+              className="bg-brand-accent text-[#f5f0e8] border-none rounded-full px-6 py-2.5 font-dm-sans text-[13px] font-bold cursor-pointer whitespace-nowrap transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-0.5 active:translate-y-0 tracking-widest disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(196,98,42,0.15)] hover:shadow-[0_0_30px_rgba(196,98,42,0.25)]"
             >
-              {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Early Access'}
+              {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'EARLY ACCESS'}
             </button>
           </form>
 
           <AnimatePresence>
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 flex items-center justify-center gap-2 text-[#f5c8a8] text-sm"
-              >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>{message}</span>
-              </motion.div>
-            )}
             {status === 'error' && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 flex items-center justify-center gap-2 text-red-400 text-sm"
+                exit={{ opacity: 0, y: 10 }}
+                className="mt-4 flex items-center justify-center gap-2 text-red-500 font-medium text-sm bg-red-500/10 py-2 px-4 rounded-xl border border-red-500/20"
               >
                 <AlertCircle className="w-4 h-4" />
                 <span>{message}</span>
@@ -150,6 +204,15 @@ const Hero: React.FC = () => {
             )}
           </AnimatePresence>
         </motion.div>
+
+        {/* Success Modal */}
+        <SuccessModal 
+          isOpen={showModal} 
+          onClose={() => setShowModal(false)} 
+          email={submittedEmail}
+          referralCode={referralCode}
+          role={role}
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 22 }}

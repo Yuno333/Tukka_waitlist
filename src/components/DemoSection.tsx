@@ -7,11 +7,11 @@ const DemoSection: React.FC = () => {
     <section id="demo" className="relative overflow-hidden bg-brand-bg py-24 px-6 md:py-32">
       <StarBackground density={12} color="var(--color-brand-accent)" />
       <div className="max-w-[1060px] mx-auto">
-        <span className="text-[11px] font-medium tracking-widest uppercase text-brand-accent mb-3 block">
+        <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-accent mb-4 block">
           The Solution
         </span>
-        <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-[-1.2px] text-brand-text mb-6 max-w-[580px]">
-          Tukka fixes distribution
+        <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-tight text-brand-text mb-6 max-w-[580px]">
+          Tukka fixes <span className="bg-gradient-to-r from-brand-accent via-brand-text to-brand-text bg-clip-text text-transparent">distribution</span>
         </h2>
         <p className="text-base md:text-lg text-brand-muted mb-12 max-w-[640px] leading-relaxed">
           There’s a massive gap between creating content and distributing it. Algorithms limit reach and ads are ignored. Tukka delivers natural distribution that blends in.
