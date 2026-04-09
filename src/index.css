@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #f0ebe0;
+  --color-brand-black: #111010;
+  --color-brand-text: #1a1814;
+  --color-brand-muted: #7a756e;
+  --color-brand-accent: #c4622a;
+  --color-brand-accent-hover: #a8501f;
+  --color-brand-border: rgba(26, 24, 20, 0.1);
+  --color-brand-border-dark: rgba(26, 24, 20, 0.18);
+
+  --font-syne: "Syne", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+    font-family: var(--font-dm-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+@keyframes line-pulse {
+  0%, 100% { opacity: .5; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.25); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes walk-through {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Custom Utilities or Layers if needed */
