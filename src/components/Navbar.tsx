@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center h-16 px-6 md:px-12 bg-white/95 backdrop-blur-2xl border-b border-brand-border/10">
+      <nav className="fixed top-0 left-0 right-0 z-[200] flex items-center h-16 px-6 md:px-12 bg-brand-bg/95 backdrop-blur-2xl border-b border-brand-border/10">
         {/* Logo Column */}
         <div className="flex-1 flex justify-start">
           <a href="#" className="flex items-center gap-2.5 no-underline group">
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
         <div className="flex-1 flex justify-end items-center gap-4">
           <a
             href="#waitlist"
-            className="hidden sm:inline-block text-[12px] md:text-[13px] font-medium text-brand-bg bg-brand-accent no-underline px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(166,124,82,0.25)] active:translate-y-0"
+            className="hidden sm:inline-block text-[12px] md:text-[13px] font-bold text-[#f5f0e8] bg-brand-accent no-underline px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 hover:bg-brand-accent-hover hover:text-brand-accent hover:-translate-y-px active:translate-y-0 shadow-[0_8px_20px_rgba(128,0,32,0.25)]"
           >
             Join Waitlist
           </a>

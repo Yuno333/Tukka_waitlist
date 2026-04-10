@@ -16,7 +16,7 @@ const CTA: React.FC = () => {
       <div className="max-w-[1060px] mx-auto bg-brand-text rounded-3xl p-15 md:p-20 flex flex-wrap items-center justify-between gap-10 relative overflow-hidden group">
         
         {/* Decorative Background Element */}
-        <div className="absolute -top-15 -right-15 w-60 h-60 rounded-full bg-radial-[circle,rgba(166,124,82,0.2),transparent_70%] pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
+        <div className="absolute -top-15 -right-15 w-60 h-60 rounded-full bg-radial-[circle,rgba(128,0,32,0.2),transparent_70%] pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
 
         <div>
           <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-tight text-[#f5f0e8] mb-4">
