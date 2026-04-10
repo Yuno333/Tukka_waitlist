@@ -4,11 +4,10 @@ import StarBackground from './StarBackground';
 
 const CTA: React.FC = () => {
     const socialIcons = [
-        { icon: <X />, label: "Twitter" },
-        { icon: <Camera />, label: "Instagram" },
-        { icon: <Video />, label: "YouTube" },
-        { icon: <Link />, label: "LinkedIn" }
-
+        { icon: <X />, label: "Twitter", href: "https://x.com/trytukka" },
+        // { icon: <Camera />, label: "Instagram" },
+        // { icon: <Video />, label: "YouTube" },
+        // { icon: <Link />, label: "LinkedIn" }
       ];
 
   return (
@@ -17,7 +16,7 @@ const CTA: React.FC = () => {
       <div className="max-w-[1060px] mx-auto bg-brand-text rounded-3xl p-15 md:p-20 flex flex-wrap items-center justify-between gap-10 relative overflow-hidden group">
         
         {/* Decorative Background Element */}
-        <div className="absolute -top-15 -right-15 w-60 h-60 rounded-full bg-radial-[circle,rgba(196,98,42,0.2),transparent_70%] pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
+        <div className="absolute -top-15 -right-15 w-60 h-60 rounded-full bg-radial-[circle,rgba(166,124,82,0.2),transparent_70%] pointer-events-none group-hover:scale-110 transition-transform duration-1000" />
 
         <div>
           <h2 className="font-syne text-3xl md:text-5xl font-extrabold tracking-tight text-[#f5f0e8] mb-4">
@@ -33,7 +32,7 @@ const CTA: React.FC = () => {
                 {socialIcons.map((social, index) => (
                     <a 
                         key={index}
-                        href="#" 
+                        href={social.href || "#"} 
                         className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#f5f0e8] transition-all hover:bg-brand-accent/20 hover:border-brand-accent/40 hover:-translate-y-0.5"
                     >
                         {React.cloneElement(social.icon as React.ReactElement<any>, { size: 18, strokeWidth: 2 })}

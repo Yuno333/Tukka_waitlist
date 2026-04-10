@@ -25,7 +25,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const displayCode = referralCode || 'EARLY-ACCESS';
-  const referralLink = `https://trytukka.io/?ref=${displayCode}`;
+  const referralLink = `https://trytukka.fun/?ref=${displayCode}`;
 
   const shareText = "I just joined the @tryTukka movement! Turning content into reach and unlocking natural distribution. 🚀";
 
@@ -174,22 +174,24 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
                 >
                   <Twitter size={20} fill="currentColor" className="group-hover:scale-110 transition-transform" />
                 </a>
-                <a
-                  href={`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(shareText)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-[#0088cc] hover:border-[#0088cc] transition-all hover:-translate-y-1 group"
-                >
-                  <Send size={20} className="group-hover:scale-110 transition-transform" />
-                </a>
-                <a
-                  href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + referralLink)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-[#25D366] hover:border-[#25D366] transition-all hover:-translate-y-1 group"
-                >
-                  <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
-                </a>
+                {/* 
+                 <a
+                   href={`https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(shareText)}`}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-[#0088cc] hover:border-[#0088cc] transition-all hover:-translate-y-1 group"
+                 >
+                   <Send size={20} className="group-hover:scale-110 transition-transform" />
+                 </a>
+                 <a
+                   href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + referralLink)}`}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="flex items-center justify-center gap-2 p-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-[#25D366] hover:border-[#25D366] transition-all hover:-translate-y-1 group"
+                 >
+                   <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
+                 </a>
+                 */}
               </div>
             </motion.div>
 

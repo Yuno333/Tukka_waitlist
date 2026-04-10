@@ -188,13 +188,13 @@ const Hero: React.FC = () => {
                 placeholder="Enter your email"
                 required
                 disabled={status === 'loading' || status === 'success'}
-                className="w-full bg-white/[0.12] border-2 border-[#000] rounded-full px-6 py-3.5 font-dm-sans text-sm text-[#f5f0e8] outline-none backdrop-blur-md transition-all focus:bg-white/15 placeholder:text-white/30 disabled:opacity-50"
+                className="w-full bg-white/[0.12] border-2 border-[#000] rounded-full px-6 py-3.5 font-dm-sans text-sm text-black outline-none backdrop-blur-md transition-all focus:bg-white/15 placeholder:text-black/40 disabled:opacity-50"
               />
             </div>
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="bg-brand-accent text-[#f5f0e8] border-none rounded-full px-6 py-2.5 font-dm-sans text-[13px] font-bold cursor-pointer whitespace-nowrap transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-0.5 active:translate-y-0 tracking-widest disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(196,98,42,0.15)] hover:shadow-[0_0_30px_rgba(196,98,42,0.25)]"
+              className="bg-brand-accent text-[#f5f0e8] border-none rounded-full px-6 py-2.5 font-dm-sans text-[13px] font-bold cursor-pointer whitespace-nowrap transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-0.5 active:translate-y-0 tracking-widest disabled:opacity-50 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(166,124,82,0.15)] hover:shadow-[0_0_30px_rgba(166,124,82,0.25)]"
             >
               {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : 'EARLY ACCESS'}
             </button>

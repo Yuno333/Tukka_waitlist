@@ -21,7 +21,7 @@ const steps = [
   {
     icon: <Rocket />,
     title: "Niche Ecosystems",
-    description: "Dominante specific spaces: from Crypto and Meme pages to Investment and Political communities."
+    description: "Dominante specific spaces: from Web3, Content Creation to Consumer Product and Political Affairs."
   }
 ];
 

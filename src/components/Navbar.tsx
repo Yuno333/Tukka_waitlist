@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
         <div className="flex-1 flex justify-end items-center gap-4">
           <a
             href="#waitlist"
-            className="hidden sm:inline-block text-[12px] md:text-[13px] font-medium text-brand-bg bg-brand-accent no-underline px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(196,98,42,0.25)] active:translate-y-0"
+            className="hidden sm:inline-block text-[12px] md:text-[13px] font-medium text-brand-bg bg-brand-accent no-underline px-4 md:px-6 py-2 md:py-2.5 rounded-full transition-all duration-300 hover:bg-brand-accent-hover hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(166,124,82,0.25)] active:translate-y-0"
           >
             Join Waitlist
           </a>
