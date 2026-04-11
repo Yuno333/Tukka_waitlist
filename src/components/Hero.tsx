@@ -7,12 +7,12 @@ import ErrorModal from './ErrorModal';
 
 const Hero: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [role] = useState<'Creator' | 'Spreader'>('Creator');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [role] = useState < 'Creator' | 'Spreader' > ('Creator');
+  const [status, setStatus] = useState < 'idle' | 'loading' | 'success' | 'error' > ('idle');
   const [message, setMessage] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
   const [referralCode, setReferralCode] = useState('');
-  const [referredBy, setReferredBy] = useState<string | null>(null);
+  const [referredBy, setReferredBy] = useState < string | null > (null);
   const [showModal, setShowModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
 
@@ -37,17 +37,17 @@ const Hero: React.FC = () => {
     try {
       const { data, error } = await supabase
         .from('waitlist')
-        .insert([{ 
-          email, 
+        .insert([{
+          email,
           role,
           referred_by: referredBy,
-          created_at: new Date().toISOString() 
+          created_at: new Date().toISOString()
         }])
         .select('referral_code')
         .single();
 
       if (error) throw error;
-      
+
       setSubmittedEmail(email);
       if (data?.referral_code) {
         setReferralCode(data.referral_code);
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
       setEmail('');
     } catch (err: any) {
       console.error('Waitlist error:', err);
-      
+
       if (err.code === '23505') {
         setSubmittedEmail(email);
         setShowErrorModal(true);
@@ -127,7 +127,8 @@ const Hero: React.FC = () => {
               Tukka <span className="text-brand-accent">fixes it.</span>
             </p>
             <p className="text-[13px] md:text-base text-white/70 max-w-[1000px] mx-auto leading-relaxed text-center px-4 font-medium balance">
-              Tukka turns your content into an organic distribution network — powered by real people, real pages, and real audiences.
+              Tukka feeds your content into an organic distribution network — powered by Average people, Real audience, No Location Restrictions. No Language Barriers.
+              <br /> <span className="text-brand-accent font-bold">Earned Media Oriented</span>
             </p>
           </div>
         </motion.div>
@@ -216,9 +217,9 @@ const Hero: React.FC = () => {
         </motion.div>
 
         {/* Success Modal */}
-        <SuccessModal 
-          isOpen={showModal} 
-          onClose={() => setShowModal(false)} 
+        <SuccessModal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
           email={submittedEmail}
           referralCode={referralCode}
           role={role}

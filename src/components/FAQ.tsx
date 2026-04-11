@@ -35,7 +35,7 @@ const faqs = [
     question: "How do Spreaders earn on Tukka?",
     answer: (
       <div className="space-y-4">
-        <p>Spreaders earn through a <span className="text-brand-accent font-bold">CPM-based model (pay per 1,000 views)</span>.</p>
+        <p>Spreaders earn through a <span className="text-brand-accent font-bold">CPM-based model (pay per 100 views)</span>.</p>
         <div className="space-y-2">
           <p className="font-bold text-brand-text">Earnings are based on:</p>
           <ul className="space-y-1">
@@ -83,7 +83,7 @@ const faqs = [
 ];
 
 const FAQ: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState < number | null > (null);
 
   return (
     <section id="faq" className="relative overflow-hidden bg-brand-bg px-6 py-24 lg:py-32">
@@ -99,11 +99,11 @@ const FAQ: React.FC = () => {
         </div>
 
         {faqs.map((faq, index) => (
-          <div 
+          <div
             key={index}
             className="border-t border-brand-border-dark py-6 last:border-b last:border-brand-border-dark"
           >
-            <button 
+            <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="w-full flex items-start justify-between gap-4 text-left font-syne text-[15px] font-bold text-brand-text cursor-pointer select-none group"
             >
@@ -116,7 +116,7 @@ const FAQ: React.FC = () => {
                 <Plus size={22} strokeWidth={2} />
               </motion.div>
             </button>
-            
+
             <AnimatePresence>
               {openIndex === index && (
                 <motion.div
