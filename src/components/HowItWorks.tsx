@@ -6,12 +6,12 @@ const steps = [
   {
     icon: <Upload />,
     title: "Upload Content",
-    description: "Creators submit content of their product — videos, tweets, memes, or campaigns — directly to the Tukka engine."
+    description: "Projects submit content — videos, tweets, memes, or campaigns — directly to the Tukka engine."
   },
   {
     icon: <Zap />,
-    title: "Spreaders Distribute",
-    description: "Our network of Spreaders reposts and edits in their own voice: meme style, professional, or niche-specific."
+    title: "Creators Distribute",
+    description: "Our network of Creators reposts and edits in their own voice: meme style, professional, or niche-specific."
   },
   {
     icon: <BarChart3 />,
@@ -40,7 +40,7 @@ const HowItWorks: React.FC = () => {
             <span className="bg-gradient-to-r from-brand-accent via-brand-text to-brand-text bg-clip-text text-transparent">Tukka</span> in Action
           </h2>
           <p className="text-base text-brand-muted max-w-[600px] mx-auto leading-relaxed">
-            From Product - Content submission to exponential reach — our automated distribution engine handles the complex heavy lifting.
+            From Project - Content submission to exponential reach — our automated distribution engine handles the complex heavy lifting.
           </p>
         </div>
 

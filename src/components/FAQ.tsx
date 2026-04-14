@@ -6,15 +6,15 @@ import StarBackground from './StarBackground';
 const faqs = [
   {
     question: "What is Tukka?",
-    answer: "Tukka is a content distribution platform that helps creators, brands, public figures, and crypto projects amplify their reach through a network of real users (“Spreaders”) sharing content across social media. Instead of relying on ads, Tukka turns everyday users into a distributed marketing engine."
+    answer: "Tukka is a content distribution platform that helps projects, public figures, and crypto projects amplify their reach through a network of real users (“Creators”) sharing content across social media. Instead of relying on ads, Tukka turns everyday users into a distributed marketing engine."
   },
   {
     question: "How does Tukka distribution work?",
     answer: (
       <div className="space-y-4">
-        <p>Tukka connects your content to a network of Spreaders who share it within their niche and audience.</p>
+        <p>Tukka connects your content to a network of Creators who share it within their niche and audience.</p>
         <div className="space-y-2">
-          <p className="font-bold text-brand-text">Creators and brands can:</p>
+          <p className="font-bold text-brand-text">Projects can:</p>
           <ul className="space-y-1">
             <li className="flex items-center gap-2">
               <span className="text-brand-accent">🔸</span> Choose their target audience (location, niche, interests)
@@ -27,15 +27,15 @@ const faqs = [
             </li>
           </ul>
         </div>
-        <p>Spreaders don’t just repost — they <span className="text-brand-accent font-bold">add their own opinions</span>, making the content feel native and trusted.</p>
+        <p>Creators don’t just repost — they <span className="text-brand-accent font-bold">add their own opinions</span>, making the content feel native and trusted.</p>
       </div>
     )
   },
   {
-    question: "How do Spreaders earn on Tukka?",
+    question: "How do Creators earn on Tukka?",
     answer: (
       <div className="space-y-4">
-        <p>Spreaders earn through a <span className="text-brand-accent font-bold">CPM-based model (pay per 100 views)</span>.</p>
+        <p>Creators earn through a <span className="text-brand-accent font-bold">CPM-based model (pay per 100 views)</span>.</p>
         <div className="space-y-2">
           <p className="font-bold text-brand-text">Earnings are based on:</p>
           <ul className="space-y-1">
@@ -55,7 +55,7 @@ const faqs = [
     )
   },
   {
-    question: "Do I need a large following to earn as a Spreader?",
+    question: "Do I need a large following to earn as a Creator?",
     answer: (
       <div className="space-y-4">
         <p>No — follower count doesn’t matter on Tukka.</p>

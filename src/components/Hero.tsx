@@ -7,7 +7,7 @@ import ErrorModal from './ErrorModal';
 
 const Hero: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [role] = useState < 'Creator' | 'Spreader' > ('Creator');
+  const [role] = useState < 'Project' | 'Creator' > ('Project');
   const [status, setStatus] = useState < 'idle' | 'loading' | 'success' | 'error' > ('idle');
   const [message, setMessage] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-24 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-44 pb-32 overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <motion.video
@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 1, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(80, 41, 18, 0.35)] bg-[hsla(30, 100%, 0%, 0.99)] mb-9"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[rgba(80, 41, 18, 0.35)] bg-[hsla(30, 100%, 0%, 0.99)] mb-12"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-[pulse_2s_infinite]" />
           <span className="text-[11px] font-medium tracking-[0.09em] uppercase text-[#0E0E0E]">
@@ -110,7 +110,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-          className="font-syne text-4xl md:text-6xl lg:text-8xl font-extrabold leading-[1.1] tracking-[-1px] md:tracking-[-3px] mb-8 drop-shadow-[0_2px_48px_rgba(0,0,0,0.4)] text-center px-4 text-[#f5f0e8]"
+          className="font-syne text-4xl md:text-6xl lg:text-8xl font-extrabold leading-[1.1] tracking-[-1px] md:tracking-[-3px] mb-12 drop-shadow-[0_2px_48px_rgba(0,0,0,0.4)] text-center px-4 text-[#f5f0e8]"
         >
           <span className="bg-gradient-to-br from-brand-accent via-[#f5f0e8] to-[#f5f0e8] bg-clip-text text-transparent">Turn</span> Content Into <span className="bg-gradient-to-bl from-[#f5f0e8] via-[#f5f0e8] to-brand-accent bg-clip-text text-transparent">Reach</span>
         </motion.h1>
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="mb-12 space-y-6"
+          className="mb-16 space-y-10"
         >
           <div className="space-y-5 px-2">
             <p className="text-lg md:text-2xl lg:text-3xl font-bold text-[#f5f0e8] tracking-tight text-center leading-tight">
@@ -127,8 +127,9 @@ const Hero: React.FC = () => {
               Tukka <span className="text-brand-accent">fixes it.</span>
             </p>
             <p className="text-[13px] md:text-base text-white/70 max-w-[1000px] mx-auto leading-relaxed text-center px-4 font-medium balance">
-              Tukka feeds your content into an organic distribution network — powered by Average people, Real audience, No Location Restrictions. No Language Barriers.
-              <br /> <span className="text-brand-accent font-bold">Earned Media Oriented</span>
+              Every <span className="text-brand-accent font-bold text-lg md:text-xl">project</span> spreads through
+              <span className="text-brand-accent font-bold text-lg md:text-xl"> people</span>
+              <br /> <span className="text-brand-accent font-bold">Every user can earn from sharing value</span>
             </p>
           </div>
         </motion.div>
@@ -146,7 +147,7 @@ const Hero: React.FC = () => {
                     className="absolute h-[calc(100%-8px)] rounded-xl bg-brand-accent shadow-[0_0_20px_rgba(196,98,42,0.3)]"
                     initial={false}
                     animate={{
-                        x: role === 'Creator' ? 0 : '100%',
+                        x: role === 'Project' ? 0 : '100%',
                         width: '50%'
                     }}
                     transition={{ type: "spring", damping: 28, stiffness: 260 }}
@@ -154,17 +155,17 @@ const Hero: React.FC = () => {
                 
                 <button
                     type="button"
+                    onClick={() => setRole('Project')}
+                    className={`relative flex-1 px-8 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 z-10 whitespace-nowrap outline-none ${role === 'Project' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
+                >
+                    Project
+                </button>
+                <button
+                    type="button"
                     onClick={() => setRole('Creator')}
                     className={`relative flex-1 px-8 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 z-10 whitespace-nowrap outline-none ${role === 'Creator' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
                 >
                     Creator
-                </button>
-                <button
-                    type="button"
-                    onClick={() => setRole('Spreader')}
-                    className={`relative flex-1 px-8 py-2.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 z-10 whitespace-nowrap outline-none ${role === 'Spreader' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
-                >
-                    Spreader
                 </button>
             </div>
         </motion.div>
@@ -174,7 +175,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="relative max-w-[460px] mx-auto"
+          className="relative max-w-[500px] mx-auto"
         >
           <form
             onSubmit={handleSubmit}
@@ -236,11 +237,11 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-          className="flex justify-center mt-12 mx-auto max-w-[420px] rounded-2xl overflow-hidden backdrop-blur-md bg-black/20 border border-white/12"
+          className="flex justify-center mt-20 mx-auto max-w-[420px] rounded-2xl overflow-hidden backdrop-blur-md bg-black/20 border border-white/12"
         >
           <div className="flex-1 p-4 md:p-5 text-center border-r border-white/10">
             <span className="block font-syne text-xl font-bold text-[#f5f0e8]">12k+</span>
-            <span className="text-[11px] text-white/40 tracking-wider uppercase">Creators</span>
+            <span className="text-[11px] text-white/40 tracking-wider uppercase">Projects</span>
           </div>
           <div className="flex-1 p-4 md:p-5 text-center border-r border-white/10">
             <span className="block font-syne text-xl font-bold text-[#f5f0e8]">50M</span>

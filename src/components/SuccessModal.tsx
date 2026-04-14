@@ -15,7 +15,7 @@ interface SuccessModalProps {
   onClose: () => void;
   email?: string;
   referralCode?: string;
-  role?: 'Creator' | 'Spreader';
+  role?: 'Project' | 'Creator';
 }
 
 const SuccessModal: React.FC<SuccessModalProps> = ({ 
